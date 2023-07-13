@@ -1,0 +1,96 @@
+\documentclass[12pt,fleqn]{report}
+\include{structure}
+\include{structureSG}
+\usepackage{ulem}
+\usepackage[dvipsnames]{xcolor}
+\begin{document}
+
+\chapter*{Newton Coding Style}
+\section{Introduction}
+\subsection{Organisation}
+Le \emph{Newton Coding Style} est un jeu de règles que vous devez suivre pour que votre code soit lisible aisément et compréhensible par tout le monde. (Tout non respect de ses règles entrainera des pertes de points voir la non lecture de vos exercices). \\
+Il couvre : 
+\begin{itemize}
+    \item L'organisation de votre dossier projet
+    \item Le nom de vos variables
+    \item L'organisation de vos fichiers codes (les paragraphes)
+    \item L'écriture de vos lignes de codes
+\end{itemize}
+\subsection{Pourquoi ?}
+Ecrire un code avec le \emph{NCS} rend la lecture du code simple pour les autres. Cela facilite donc le travail en groupe, l'entraide et la correction de vos codes. Cela vous permet en plus de structurer et de rendre votre code plus clair. Mais surtout ça vous facilite la vie dans :
+\begin{itemize}
+    \item La lecture et relecture
+    \item Le debuggage (plus gros travail de l'informaticien)
+    \item La maintenance
+    \item La conception logique de votre code
+    \item La réutilisabilité de votre code (que vous ne fassiez pas 2 fois la même chose)
+\end{itemize}
+
+\subsection{Niveaux de règles}
+Les règles sont répartis en 3 catégories de sévérités : 
+\begin{itemize}
+    \item Les \textcolor{red}{\textbf{Règles Majeures}} : Elles concernent \underline{la structure du code} et sont extremement dommageable à l'écriture de votre code. Transgressée une règle majeure est un problème majeur (même qu'une fois) et doit être réglé le plus rapidement possible. Les règles majeures seront écrites en \textcolor{red}{Rouge}
+    \item Les \textcolor{teal}{\textit{Règles Mineures}} : Elles concernent \underline{la représentation visuelle du code}. Les suivre permet de rendre votre code plus lisible. Transgresser de façon répétée des erreurs mineures doit être évitée car cela rend le code difforme et peu lisible. Les règles mineures seront écrites en \textcolor{teal}{Vert}
+    \item Les \textcolor{gray}{Règles Informatives} : Elles concernent \underline{les points spécifiques triviaux} qui ne sont pas aussi importants que les règles mineures et majeures. Chacune de ces règles représente de bonnes pratiques et doit être suivies pour assurer un code de la meilleure qualité possible. Les règles informatives seront écrites en \textcolor{gray}{Gris}
+\end{itemize}
+
+\begin{theorem}
+    Le \emph{Coding Style} est une convention de syntaxe seulement et ne peut nullement être utilisée comme une excuse si votre code ne fonctionne pas ! 
+\end{theorem}
+
+
+\begin{remark}
+    Le document est inspiré du Coding Style d'Epitech qui est lui inspiré du Linux Kernel Coding Style.
+\end{remark}
+
+\subsection{Tarifs}
+\begin{itemize}
+    \item La note maximale à un code qui ne fonctionne pas est de 5/20.
+    \item Une infraction à une règle majeure enlève 3 points.
+    \item Une infraction à une règle mineure enlève 1 point.
+    \item Une infraction à une règle informative enlève 1/2 point.
+\end{itemize}
+
+\section{Organisation de votre fichier source}
+\begin{itemize}
+    \item \textcolor{teal}{\textbf{O-1} : PEP8} : Le nommage des variables, nom de fonctions, nom de fichier doit suivre le guide de style python PEP8. Les points importants sont : 
+    \begin{itemize}
+        \item Les noms de variables et de fonctions sont en minuscules
+        \item Les espaces sont remplacés par des underscores $\_$.
+    \end{itemize}
+    \item \textcolor{teal}{\textbf{O-2} : Nommage des fichiers, dossiers et fonctions} : Le nom des fichiers doit définir de façon claire, précise, explicite, non ambiguë ce que le fichier fait : \sout{exercice 1.py}, résolution\_exercice\_1.py, correction\_exercice\_1.py
+    \item\textcolor{teal}{\textbf{O-3} : Abréviations} Les abréviations, les noms de variables de 1 caractère sont interdits.    
+\end{itemize}
+
+\section{Echelle globale du programme}
+\begin{itemize}
+    \item \textcolor{teal}{\textbf{G-1} : Séparation des fonctions} Les fonctions doivent être séparées par une et une seule ligne vide.
+    \item \textcolor{red}{\textbf{G-2} : Variables globales} : Les variables globales dans les fonctions doivent être éviter.  Si cela ne peut pas être éviter, il faut les déclarer au début des fonctions par un : \textit{global exemple\_de\_variable\_globale}.
+    Les seules variables globales doivent être les constantes. Ces dernières sont écrites toute en CAPITALE.
+    \item \textcolor{teal}{\textbf{G-3} : Espace de fin de ligne} Il ne doit pas y avoir d'espace ou de tabulation à la fin des lignes
+    \item \textcolor{red}{\textbf{G-4} : Indentation initiale} : Il ne doit pas y avoir d'espace ou de tabulation en début de fichier. La première ligne de code ne peut jamais contenir en premier caractère un espace.
+\end{itemize}
+
+\section{Les Fonctions}
+\begin{itemize}
+    \item \textcolor{red}{\textbf{F-1} : Cohérence des fonction} Une fonction ne doit faire qu'une chose, elle ne peut pas mélanger plusieurs degrés d'abstraction. Elle doit aussi respecter le principe de responsabilité unique et n'est responsable que d'une tache.
+    \item \textcolor{red}{\textbf{F-2} : Nommage des fonctions} Le nom d'une fonction doit définir la tache qu'elle execute et doit contenir un verbe. Dans la mesure du possible les fonctions doivent être écrites en anglais (cela sera bonifier).
+    \item \textcolor{red}{\textbf{F-3} : Largeur du code} La longueur d'une ligne ne peut pas dépasser une longueur de 80 caractères.
+    \item \textcolor{red}{\textbf{F-4} : Longueur de fonctions et de scripts} Le corps d'un script ou d'une fonction doit être le plus court possible et ne doit pas dépasser plus de 20 lignes.
+    \item \textcolor{red}{\textbf{F-5} : Nombre de paramètres} Une fonction ne peut pas avoir plus de 4 arguments
+    \item \textcolor{teal}{\textbf{F-6} : Docstring} Une fonction doit avoir un petit commentaire décrivant l'usage et le type des arguments ainsi qu'une ligne de texte expliquant ce que fait la fonction.
+    \item \textcolor{red}{\textbf{F-7} : Fonctions emboitées} Les fonctions à l'interieur de fonction sont interdites car elles ralentissent énormément le code. 
+\end{itemize}
+
+\section{A l'interieur d'une fonction}
+\begin{itemize}
+    \item \textcolor{red}{\textbf{I-1} : Contenu d'une ligne} Une ligne ne doit contenir qu'une seule action/déclaration
+    \item \textcolor{teal}{\textbf{I-2} : Espaces} Quand vous utilisez des espaces, mettez en juste un seul (pas de double ou de triples espaces)
+\end{itemize}
+
+\section{Structure de Contrôle}
+\begin{itemize}
+    \item \textcolor{red}{\textbf{C-1} : Branchement successifs} Les blocs while, for, if/else ne peuvent pas avoir une profondeur de 3 ou plus. Pas de for dans un autre for qui lui même est dans un auter for.
+    
+\end{itemize}
+\end{document}
