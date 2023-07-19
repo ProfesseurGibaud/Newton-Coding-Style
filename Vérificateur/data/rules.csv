@@ -1,0 +1,18 @@
+Identifiant;Intitulé;Niveau de Règle
+O-1;PEP8;1
+O-2;Nommage des fichiers, dossiers et fonctions;1
+O-3;Abréviations;1
+G-1;Séparations des fonctions;1
+G-2;Variables globales;2
+G-3;Espaces de fin de ligne;1
+G-4;Indentation initiale;2
+F-1;Cohérence des fonctions;2
+F-2;Nommage des fonctions;2
+F-3;Largeur du code;2
+F-4;Longueur de fonctions et de scripts;2
+F-5;Nombre de paramètres;2
+F-6;Docstring;1
+F-7;Fonctions emboitées;2
+I-1;Contenu d'une ligne;2
+I-2;Espaces;1
+C-1;Branchement successifs;2
