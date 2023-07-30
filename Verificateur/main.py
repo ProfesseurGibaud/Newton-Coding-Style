@@ -29,14 +29,16 @@ liste_cellule_code = make_liste_cell(dico_ipynb)
 
 text_cell = liste_cellule_code[0]
 for text_cell in liste_cellule_code:
-    for function_regex in liste_functions_text_cell:
-        log_text += "," + function_regex(text_cell)
+    if len(text_cell)>0 and text_cell[0] != "#":
+        for function_regex in liste_functions_text_cell:
+            log_text += "," + function_regex(text_cell)
 
 liste_code = log_text.split(",")
 set_code = set(liste_code)
 liste_code = list(set_code)
 liste_code.remove("")
 log_text = ",".join(liste_code)
-
+print("--------------------------------")
+print(log_text)
 with open("Error.txt","w+") as file:
     file.write(log_text)
