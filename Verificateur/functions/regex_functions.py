@@ -23,12 +23,12 @@ def check_pep8(texte_cell):
     findall_variable = re.findall(pattern_variable,texte_cell)
     for variable in findall_variable: 
         if check_minuscule(variable):
-            print(f"{variable} in {findall} Pep8")
+            print(f"{variable} in {findall_variable} Pep8 : O-1 \n")
             return "O-1"
     findall_fonction = re.findall(pattern_fonction,texte_cell)
     for name_function in findall_fonction:
         if check_minuscule(name_function):
-            print(f"{name_function} in {findall_fonction} pep8")
+            print(f"{name_function} in {findall_fonction} Pep8 : O-1 \n")
             return "O-1"
     return ""   
 
@@ -40,18 +40,18 @@ def check_abreviation(text_cell):
     findall_fonction = re.findall(pattern_fonction,text_cell)
     for item in findall_fonction:
         if len(item) == 1:
-            print(f"{item} in {findall_fonction} abréviation fonction\n")
+            print(f"{item} in {findall_fonction} abréviation fonction : O-3 \n")
             return "O-3"
         if item in liste_mots_interdits:
-            print(f"{item} in {findall_fonction} abréviation fonction\n")
+            print(f"{item} in {findall_fonction} abréviation fonction : O-3 \n")
             return "O-3"
     findall_variable = re.findall(pattern_variable,text_cell)
     for item in findall_variable:
         if len(item) == 1:
-            print(f"{item} in {findall_variable} abréviation variable\n")
+            print(f"{item} in {findall_variable} abréviation variable : O-3\n")
             return "O-3"
         if item in liste_mots_interdits:
-            print(f"{item} in {findall_variable} abréviation variable\n")
+            print(f"{item} in {findall_variable} abréviation variable : O-3\n")
             return "O-3"
     return ""
 
@@ -91,7 +91,7 @@ def check_largeur(text_cell):
     for texte_ligne in text_cell.split("\n"):
         texte_ligne = texte_ligne.strip()
         if len(texte_ligne) > 80:
-            #print(f"{texte_ligne} largeur")
+            print(f"{texte_ligne} d'une largeur de {len(texte_ligne)} largeur")
             return "F-3"
     return ""
 
@@ -99,8 +99,9 @@ def count_ligne_function(text_cell):
     pattern_function_inside = "def \w+\(.*\): ?\\n    (.*)\\n\\n"
     liste_function_inside = re.findall(pattern_function_inside,text_cell)
     for function_inside in liste_function_inside : 
-        if function_inside.count("\n") >= 20:
-            #print(f"{function_inside} longueur")
+        nb_retour_ligne = function_inside.count("\n")
+        if nb_retour_ligne  >= 20:
+            print(f"\n {function_inside} \n d'une longueur de {nb_retour_ligne} : Longueur")
             return "F-4"
     return ""
 
@@ -108,8 +109,9 @@ def count_ligne_cell(text_cell):
     pattern_function_full = "(def .+)\\n\\n"
     for function_text in re.findall(pattern_function_full,text_cell):
         text_cell = text_cell.replace(function_text,"")
-    if text_cell.count("\n") >= 20:
-        #print(f"{text_cell} longueur")
+    nb_retour_ligne = text_cell.count("\n")
+    if nb_retour_ligne >= 20:
+        print(f"\n {text_cell} \n d'une longueur de {nb_retour_ligne} : Longueur")
         return "F-4"
     else:
         return ""
@@ -130,8 +132,10 @@ def nested_function(text_cell):
     return ""
 
 def check_espaces(text_cell):
-    if " " in text_cell or "   " in text_cell:
-        return "I-2"
+    for ligne in text_cell.split("\n"):
+        findall = re.findall("\w+(  +)",ligne)
+        if len(findall)>0:
+            return "I-2"
     return ""
 
 def check_branchement_successifs(text_cell):

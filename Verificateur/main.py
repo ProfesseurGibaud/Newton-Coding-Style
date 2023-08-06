@@ -23,7 +23,7 @@ liste_functions_text_cell = [
 
 log_text = check_naming()
 
-file_name = "test"
+file_name = "pile_file"
 dico_ipynb = read_ipynb(file_name)
 liste_cellule_code = make_liste_cell(dico_ipynb)
 
@@ -37,8 +37,11 @@ liste_code = log_text.split(",")
 set_code = set(liste_code)
 liste_code = list(set_code)
 liste_code.remove("")
-log_text = ",".join(liste_code)
-print("--------------------------------")
-print(log_text)
-with open("Error.txt","w+") as file:
-    file.write(log_text)
+if len(liste_code)>0:
+    log_text = ",".join(liste_code)
+    print("--------------------------------")
+    print(log_text)
+    with open("error.txt","w+") as file:
+        file.write(log_text)
+else:
+    print("Pas d'erreur")
